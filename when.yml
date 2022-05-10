@@ -1,0 +1,32 @@
+--- # yaml for when condition
+- hosts : webservers
+  become : yes
+  user : ansible
+  connection : ssh
+
+
+  tasks :
+
+    - name : installing httpd for "RedHat" fsmily
+      yum :
+        name : httpd
+        state : installed
+      when : ansible_os_family == "RedHat"
+
+    - name : starting service for "RedHat" httpd
+      service :
+        name : httpd
+        state : started
+
+
+    - name : installing apache2 for "Debian" fsmily
+      apt :
+        name : apache2
+        state : present
+      when : ansible_os_family == "Debian"
+
+    - name : starting service for "Debian" apache2
+      service :
+        name : apache2
+        state : started
+      

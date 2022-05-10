@@ -1,0 +1,11 @@
+--- # this is my demo playbook
+- hosts : webservers
+  user : ansible
+  become : yes
+  connection : ssh
+
+
+  tasks:
+    - name : installing httpd on webservers
+      action : yum pkg=httpd state=installed
+

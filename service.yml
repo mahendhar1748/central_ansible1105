@@ -1,0 +1,9 @@
+--- # service for webservers
+- hosts : webservers
+  user : ansible
+  become : yes
+  connection : ssh
+
+  tasks :
+    - name : starting serive for httpd
+      action : service name=httpd state=started

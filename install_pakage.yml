@@ -1,0 +1,14 @@
+--- # installing pakages
+- name : installing package
+  hosts : webservers
+  become : true
+  connection : ssh
+  user : ansible
+
+  tasks :
+
+    - name : installing pakage
+      yum :
+        name : docker
+        state : installed
+
